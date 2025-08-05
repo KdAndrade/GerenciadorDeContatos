@@ -13,10 +13,23 @@ while True:
     
     escolha = input("Digite o número da sua escolha: ")
     
-    if escolha == '1':
+       if escolha == '1':
         print("\nVocê escolheu (Adicionar contato).")
-        novo_nome = input("Adicione o nome do contato: ")
-        novo_numero = input("Adicione o número: ")
+
+        while True:
+            novo_nome = input("Adicione o nome do contato: ")
+            if novo_nome:
+                break
+            else:
+                print("ERRO: O nome não pode ser vazio. Tente novamente.")
+        
+        while True:
+            novo_numero = input("Adicione o número: ")
+            if novo_numero:
+                break
+            else:
+                print("ERRO: O número não pode ser vazio. Tente novamente.")
+
         novo_email = input("Adicione o email: ")
 
         novo_contato = {
@@ -24,7 +37,6 @@ while True:
             "numero": novo_numero,
             "email": novo_email
         }
-
         contatos.append(novo_contato)
 
         print(f"\nContato '{novo_nome}' adicionado com sucesso!")
