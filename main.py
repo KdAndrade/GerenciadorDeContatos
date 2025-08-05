@@ -1,4 +1,4 @@
-nomes = []
+contatos = []
 
 def mostrar_menu():
     print("MENU")
@@ -14,13 +14,22 @@ while True:
     escolha = input("Digite o número da sua escolha: ")
     
     if escolha == '1':
-        novo_nome = input("Digite o nome do novo contato: ")
-        
-        nomes.append(novo_nome)
-        
-        print(f"Contato '{novo_nome}' adicionado com sucesso!")
-        input("Pressione Enter para continuar...")
+        print("\nVocê escolheu (Adicionar contato).")
+        novo_nome = input("Adicione o nome do contato: ")
+        novo_numero = input("Adicione o número: ")
+        novo_email = input("Adicione o email: ")
 
+        novo_contato = {
+            "nome": novo_nome,
+            "numero": novo_numero,
+            "email": novo_email
+        }
+
+        contatos.append(novo_contato)
+
+        print(f"\nContato '{novo_nome}' adicionado com sucesso!")
+        input("Pressione Enter para continuar...")
+        
     elif escolha == '2':
         print("\nVocê escolheu (Listar contatos).")
         print(f"Contatos: {nomes}")
