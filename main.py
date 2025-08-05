@@ -30,9 +30,9 @@ while True:
         print(f"\nContato '{novo_nome}' adicionado com sucesso!")
         input("Pressione Enter para continuar...")
         
-    elif escolha == '2':
+      elif escolha == '2':
         print("\nVocê escolheu (Listar contatos).")
-        print(f"Contatos: {nomes}")
+        print(f"Contatos: {contatos}")
         input("Pressione Enter para continuar...")
 
     elif escolha == '3':
