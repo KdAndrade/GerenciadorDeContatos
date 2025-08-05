@@ -47,9 +47,43 @@ while True:
         print(f"Contatos: {contatos}")
         input("Pressione Enter para continuar...")
 
-    elif escolha == '3':
-        print("\nVocê escolheu 'Editar item'.")
-        input("Pressione Enter para continuar...")
+       elif escolha == '3':
+        print("\nEDITAR CONTATO")
+
+        if not contatos:
+            print("Nenhum contato para editar.")
+            input("\nPressione Enter para continuar...")
+            continue
+
+        for i, contato in enumerate(contatos):
+            print(f"ID: {i} | Nome: {contato['nome']}")
+        print("--------------------")
+
+        try:
+            id_para_editar = int(input("Digite o ID do contato que deseja editar: "))
+
+            if 0 <= id_para_editar < len(contatos):
+                contato_a_editar = contatos[id_para_editar]
+                print(f"\nEditando o contato: {contato_a_editar['nome']}")
+
+                novo_nome = input(f"Novo nome (ou Enter para manter '{contato_a_editar['nome']}'): ")
+                novo_numero = input(f"Novo número (ou Enter para manter '{contato_a_editar['numero']}'): ")
+                novo_email = input(f"Novo email (ou Enter para manter '{contato_a_editar['email']}'): ")
+
+                if novo_nome:
+                    contato_a_editar['nome'] = novo_nome
+                if novo_numero:
+                    contato_a_editar['numero'] = novo_numero
+                if novo_email:
+                    contato_a_editar['email'] = novo_email
+                
+                print("\nContato atualizado com sucesso!")
+            else:
+                print("ID inválido! Por favor, escolha um ID da lista.")
+        except ValueError:
+            print("Entrada inválida! Por favor, digite apenas o número do ID.")
+        
+        input("\nPressione Enter para continuar...")
         
     elif escolha == '4':
         print("\nSaindo do programa. Até logo!")
@@ -58,3 +92,4 @@ while True:
     else:
         print("\nOpção inválida! Por favor, escolha uma opção do menu.")
         input("Pressione Enter para tentar novamente...")
+
