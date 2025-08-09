@@ -3,9 +3,10 @@ contatos = []
 def mostrar_menu():
     print("MENU")
     print("1. Adicionar contato")
-    print("2. Listar itens")
-    print("3. Editar item")
-    print("4. Sair")
+    print("2. Listar contatos")
+    print("3. Editar contatos")
+    print("4. Deletar contato")
+    print("5. Sair")
     print("--------------------")
 
 while True:
@@ -13,7 +14,7 @@ while True:
     
     escolha = input("Digite o número da sua escolha: ")
     
-       if escolha == '1':
+    if escolha == '1':
         print("\nVocê escolheu (Adicionar contato).")
 
         while True:
@@ -42,17 +43,17 @@ while True:
         print(f"\nContato '{novo_nome}' adicionado com sucesso!")
         input("Pressione Enter para continuar...")
         
-      elif escolha == '2':
+    elif escolha == '2':
         print("\nVocê escolheu (Listar contatos).")
         print(f"Contatos: {contatos}")
-        input("Pressione Enter para continuar...")
+        input("Pressione Enter para continuar.")
 
-       elif escolha == '3':
+    elif escolha == '3':
         print("\nEDITAR CONTATO")
 
         if not contatos:
             print("Nenhum contato para editar.")
-            input("\nPressione Enter para continuar...")
+            input("\nPressione Enter para continuar.")
             continue
 
         for i, contato in enumerate(contatos):
@@ -83,13 +84,45 @@ while True:
         except ValueError:
             print("Entrada inválida! Por favor, digite apenas o número do ID.")
         
-        input("\nPressione Enter para continuar...")
+        input("\nPressione Enter para continuar.")
         
     elif escolha == '4':
+        print("\nDELETAR CONTATO")
+
+        if not contatos:
+            print("Nenhum contato para deletar.")
+            input("\nPressione Enter para continuar.")
+            continue
+
+        for i, contato in enumerate(contatos):
+            print(f"ID: {i} | Nome: {contato['nome']}")
+        print("--------------------")
+
+        try:
+            id_para_deletar = int(input("Digite o ID do contato que deseja deletar: "))
+
+            if 0 <= id_para_deletar < len(contatos):
+
+                contato_removido = contatos[id_para_deletar]
+                confirmacao = input(f"Tem certeza que deseja remover o contato '{contato_removido['nome']}'? (s/n): ")
+                
+                if confirmacao.lower() == 's':
+
+                    contatos.pop(id_para_deletar)
+                    print("Contato removido com sucesso!")
+                else:
+                    print("Operação cancelada.")
+            else:
+                print("ID inválido! Por favor, escolha um ID da lista.")
+        except ValueError:
+            print("Entrada inválida! Por favor, digite apenas o número do ID.")
+
+        input("\nPressione Enter para continuar.")
+        
+    elif escolha == '5':
         print("\nSaindo do programa. Até logo!")
         break
         
     else:
         print("\nOpção inválida! Por favor, escolha uma opção do menu.")
-        input("Pressione Enter para tentar novamente...")
-
+        input("Pressione Enter para tentar novamente.")
